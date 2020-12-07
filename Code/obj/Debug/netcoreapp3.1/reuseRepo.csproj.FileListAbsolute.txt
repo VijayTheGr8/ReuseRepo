@@ -1,0 +1,13 @@
+C:\Arsal\ICS4U\ReuseRepo\Code\bin\Debug\netcoreapp3.1\reuseRepo.exe
+C:\Arsal\ICS4U\ReuseRepo\Code\bin\Debug\netcoreapp3.1\reuseRepo.deps.json
+C:\Arsal\ICS4U\ReuseRepo\Code\bin\Debug\netcoreapp3.1\reuseRepo.runtimeconfig.json
+C:\Arsal\ICS4U\ReuseRepo\Code\bin\Debug\netcoreapp3.1\reuseRepo.runtimeconfig.dev.json
+C:\Arsal\ICS4U\ReuseRepo\Code\bin\Debug\netcoreapp3.1\reuseRepo.dll
+C:\Arsal\ICS4U\ReuseRepo\Code\bin\Debug\netcoreapp3.1\reuseRepo.pdb
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.csprojAssemblyReference.cache
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.AssemblyInfoInputs.cache
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.AssemblyInfo.cs
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.csproj.CoreCompileInputs.cache
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.dll
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.pdb
+C:\Arsal\ICS4U\ReuseRepo\Code\obj\Debug\netcoreapp3.1\reuseRepo.genruntimeconfig.cache
