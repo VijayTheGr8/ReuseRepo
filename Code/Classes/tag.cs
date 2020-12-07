@@ -10,7 +10,7 @@ namespace reuseRepo
     {
 
         /// <summary>
-        /// Tag or Tag Phrase
+        /// Stores Tag or Tag Phrase
         /// </summary>
         private string tag = "";
 
@@ -26,7 +26,7 @@ namespace reuseRepo
         /// <summary>
         /// Returns the Tag
         /// </summary>
-        /// <returns> The tag as a string </returns>
+        /// <returns> The tag is a string </returns>
         public string getTag()
         {
             return this.tag;
