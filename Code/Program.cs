@@ -38,10 +38,10 @@ namespace reuseRepo
             /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
             fileContent = System.Text.Json.JsonSerializer.Serialize(textArticle);
             Console.WriteLine(fileContent);
-            //File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\textArticle.json", fileContent);
+            ///File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\textArticle.json", fileContent);
             fileContent = System.Text.Json.JsonSerializer.Serialize(videoArticle);
             Console.WriteLine(fileContent);
-            //File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\VideoArticle.json", fileContent);
+            ///File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\VideoArticle.json", fileContent);
 
         }
 
