@@ -1,0 +1,34 @@
+[ 
+    {
+        "title": "How to recyle a cycle",
+        "author": "Arsal Khan",
+        "price": 0.95,
+        "tags": [
+            {
+                "tag": "cycle"
+            },
+            {
+                "tag": "tire"
+            }
+            ,
+            {
+                "tag": "chain"
+            }
+        ],
+        "memo": "this is a multie line memo."
+    },
+    {
+        "title": "pick an album",
+        "author": "Drake",
+        "price": 649,
+        "tags": [
+            {
+                "tag": "drake"
+            },
+            {
+                "tag": "Dance"
+            }
+        ],
+        "videolink": "http://test.com/vidoefilelink"
+    }
+]

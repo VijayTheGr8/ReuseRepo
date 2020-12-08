@@ -1,0 +1,14 @@
+{
+    "title": "pick an album",
+    "author": "Drake",
+    "price": 649,
+    "tags": [
+        {
+            "tag": "drake"
+        },
+        {
+            "tag": "Dance"
+        }
+    ],
+    "videolink": "http://test.com/vidoefilelink"
+}

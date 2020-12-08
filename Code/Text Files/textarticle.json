@@ -1,0 +1,18 @@
+{
+    "title": "How to recyle a cycle",
+    "author": "Arsal Khan",
+    "price": 0.95,
+    "tags": [
+        {
+            "tag": "cycle"
+        },
+        {
+            "tag": "tire"
+        }
+        ,
+        {
+            "tag": "chain"
+        }
+    ],
+    "memo": "this is a multie line memo."
+}
