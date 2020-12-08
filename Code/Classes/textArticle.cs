@@ -21,13 +21,17 @@ namespace reuseRepo
         /// </summary>
         /// <param name="title"> Initial title of the article</param>
         /// <param name="author"> Initial author of the article</param>
+         /// <param name="price"> Initial price of the article</param>
         /// <param name="tags"> Initial array of tags of the article</param>
         /// <param name="memo"> Initial text memo of the article</param>
-        public TextArticle(string title, string author, Tag[] tags, string memo) : base(title, author, tags)
+        public TextArticle(string title, string author, double price, Tag[] tags, string memo) : base(title, author, price, tags)
         {
             this.memo = memo;
         }
 
+        /// <summary>
+        /// Prits the memo on console
+        /// </summary>
         public void print()
         {
             Console.WriteLine(memo);

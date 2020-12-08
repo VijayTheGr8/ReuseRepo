@@ -20,6 +20,11 @@ namespace reuseRepo
         private string author = "";
 
         /// <summary>
+        /// Stores the author property of an article
+        /// </summary>
+        private double price = 0;
+
+        /// <summary>
         /// Stores all the tags associated with an article
         /// </summary>
         private Tag[] tags = new Tag[] { };
@@ -29,11 +34,13 @@ namespace reuseRepo
         /// </summary>
         /// <param name="title"> Initial title of the article</param>
         /// <param name="author"> Initial author of the article</param>
+        /// <param name="price"> Initial price of the article</param>
         /// <param name="tags"> Initial array of tags of the article</param>
-        public Article(string title, string author, Tag[] tags)
+        public Article(string title, string author, double price, Tag[] tags)
         {
             this.title = title;
             this.author = author;
+            this.price = price;
             this.tags = new Tag[tags.Length];
             tags.CopyTo(this.tags, 0);
         }
@@ -66,5 +73,22 @@ namespace reuseRepo
             return this.author;
         }
 
+        /// <summary>
+        /// Returns the price of an article
+        /// </summary>
+        /// <returns> The price is double/currency </returns>
+        public double getPrice()
+        {
+            return this.price;
+        }
+
+        /// <summary>
+        /// Set or change the price of an article
+        /// </summary>
+        /// <param name="price"> The price is float/currency </param>
+        public void setPrice(double price)
+        {
+            this.price = price;
+        }
     }
 }

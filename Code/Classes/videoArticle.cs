@@ -21,16 +21,20 @@ namespace reuseRepo
         /// </summary>
         /// <param name="title"> Initial title of the article</param>
         /// <param name="author"> Initial author of the article</param>
+         /// <param name="price"> Initial price of the article</param>
         /// <param name="tags"> Initial array of tags of the article</param>
         /// <param name="videolink"> Initial video link of the article</param>
-        public VideoArticle(string title, string author, Tag[] tags, string videolink) : base(title, author, tags)
+        public VideoArticle(string title, string author, double price, Tag[] tags, string videolink) : base(title, author, price, tags)
         {
             this.videolink = videolink;
         }
 
+        /// <summary>
+        /// Plays the video file link
+        /// </summary>
         public void play()
         {
-            Console.WriteLine("Play code to be written");
+            Console.WriteLine("This code would play " +  videolink);
         }
 
     }
