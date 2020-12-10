@@ -8,7 +8,7 @@ namespace reuseRepo
     {
         /// <summary>
         /// The Main funtion does following
-        /// 1. Reads and parses text and video articles from files along with tags
+        /// 1. Reads and parses text and video articles from JSON files along with tags
         /// 2. Increases the price for Articles by 10%
         /// 3. Prints or Play text and video articles.
         /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
@@ -35,14 +35,11 @@ namespace reuseRepo
             textArticle.print();
             videoArticle.play();
 
-            /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
-            fileContent = System.Text.Json.JsonSerializer.Serialize(textArticle);
+            /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json   
+            fileContent = textArticle.getJSONString();
             Console.WriteLine(fileContent);
-            ///File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\textArticle.json", fileContent);
             fileContent = System.Text.Json.JsonSerializer.Serialize(videoArticle);
             Console.WriteLine(fileContent);
-            ///File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\VideoArticle.json", fileContent);
-
         }
 
 

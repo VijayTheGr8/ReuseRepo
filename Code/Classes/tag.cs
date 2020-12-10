@@ -41,5 +41,19 @@ namespace reuseRepo
             return this.tag.Split(" ").Length > 1;
         }
 
+        /// <summary>
+        /// Creates JSON formatted text for this object
+        /// </summary>
+        public string getJSONString()
+        {
+            //used approach from the link below
+            //https://stackoverflow.com/questions/17944802/forming-json-format-string
+            string jsonString;
+            jsonString = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                tag = this.tag
+            });
+            return jsonString;
+        }
     }
 }
