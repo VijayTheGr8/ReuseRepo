@@ -45,19 +45,15 @@ namespace reuseRepo
         {
             //used approach from the link below
             //https://stackoverflow.com/questions/17944802/forming-json-format-string
-            string jsonTagString="";
             Tag[] tags = base.getTags();
-            if (tags.Length > 0)
+            object[] tagOjects = new object[tags.Length];
+
+            for (int i = 0; i < tags.Length ; i++)
             {
-                for (int i = 0; i < tags.Length - 1; i++)
+                tagOjects[i] = new
                 {
-                    jsonTagString = jsonTagString + tags[i].getJSONString();
-                    if (i < tags.Length - 1)
-                    {
-                        //if it is not the last tag then add a comma separator
-                        jsonTagString = jsonTagString + ", ";
-                    }
-                }
+                    tag = tags[i].getTag()
+                };
             }
 
             //used approach from the link below
@@ -68,7 +64,7 @@ namespace reuseRepo
                 title = base.getTitle(),
                 author = base.getAuthor(),
                 price = base.getPrice(),
-                tags = jsonTagString,
+                tags = tagOjects,
                 memo = this.memo
             });
             return jsonString;

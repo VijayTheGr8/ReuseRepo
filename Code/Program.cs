@@ -7,10 +7,10 @@ namespace reuseRepo
     class Program
     {
         /// <summary>
-        /// The Main funtion does following
-        /// 1. Reads and parses text and video articles from JSON files along with tags
+        /// The Main is the entry point for thie program and does following:
+        /// 1. Reads and parses text and video articles from JSON files along with tags objects
         /// 2. Increases the price for Articles by 10%
-        /// 3. Prints or Play text and video articles.
+        /// 3. Prints and Plays text and video articles respectively.
         /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
         /// </summary>
         static void Main()
@@ -31,19 +31,21 @@ namespace reuseRepo
             textArticle.setPrice(textArticle.getPrice() * 1.1);
             videoArticle.setPrice(videoArticle.getPrice() * 1.1);
 
-            //3. Prints or Play text and video articles.
+            //3. Prints and Plays text and video articles respectively.
             textArticle.print();
             videoArticle.play();
 
-            /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json   
+            /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
             fileContent = textArticle.getJSONString();
-            Console.WriteLine(fileContent);
-            fileContent = System.Text.Json.JsonSerializer.Serialize(videoArticle);
-            Console.WriteLine(fileContent);
+            //Console.WriteLine(fileContent);
+            File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\textArticle.json", fileContent);
+            fileContent = videoArticle.getJSONString();
+            //Console.WriteLine(fileContent);
+            File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\VideoArticle.json", fileContent);
         }
 
 
-        static void MainOld(string[] args)
+        static void MainTest(string[] args)
         {
 
             /// Step 1a: Create 2 tag for a text Article and two tags for a video article
