@@ -1,6 +1,9 @@
 using System;
 using System.Text.Json;
 
+/// <summary>
+/// The namespace for TextArticle class
+/// </summary>
 namespace reuseRepo
 {
     /// <summary>

@@ -1,3 +1,6 @@
+/// <summary>
+/// The namespace for Article class
+/// </summary>
 namespace reuseRepo
 {
     /// <summary>

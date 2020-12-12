@@ -1,5 +1,8 @@
 using System;
 
+/// <summary>
+/// The namespace for VideoArticle class
+/// </summary>
 namespace reuseRepo
 {
     /// <summary>
