@@ -44,6 +44,7 @@ namespace reuseRepo
         /// <summary>
         /// Creates JSON formatted text for this object
         /// </summary>
+        /// <returns> Returns the TextArticle in a string format</returns>
         public string getJSONString()
         {
             //used approach from the link below
@@ -51,7 +52,7 @@ namespace reuseRepo
             Tag[] tags = base.getTags();
             object[] tagOjects = new object[tags.Length];
 
-            for (int i = 0; i < tags.Length ; i++)
+            for (int i = 0; i < tags.Length; i++)
             {
                 tagOjects[i] = new
                 {

@@ -2,13 +2,17 @@
 using System.IO;
 using Newtonsoft.Json;
 
+/// <summary>
+/// The namespace for entry class Program
+/// </summary>
+/// <remarks>
 namespace reuseRepo
 {
     class Program
     {
         /// <summary>
-        /// The Main is the entry point for thie program and does following:
-        /// 1. Reads and parses text and video articles from JSON files along with tags objects
+        /// The Main is the entry point for this program and does following:
+        /// 1. Reads and parses text and video articles from JSON files along with tags objects   
         /// 2. Increases the price for Articles by 10%
         /// 3. Prints and Plays text and video articles respectively.
         /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
@@ -19,7 +23,7 @@ namespace reuseRepo
             TextArticle textArticle;
             VideoArticle videoArticle;
 
-            // 1. Reads and parses text and video articles from files along with tags
+            // 1. Reads and parses text and video articles from JSON files along with tags
             fileContent = File.ReadAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\textArticle.json");
             textArticle = Newtonsoft.Json.JsonConvert.DeserializeObject<TextArticle>(fileContent);
 
@@ -35,51 +39,12 @@ namespace reuseRepo
             textArticle.print();
             videoArticle.play();
 
-            /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
+            // 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
             fileContent = textArticle.getJSONString();
-            //Console.WriteLine(fileContent);
             File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\textArticle.json", fileContent);
+
             fileContent = videoArticle.getJSONString();
-            //Console.WriteLine(fileContent);
             File.WriteAllText("C:\\Arsal\\ICS4U\\ReuseRepo\\Code\\Text Files\\VideoArticle.json", fileContent);
-        }
-
-
-        static void MainTest(string[] args)
-        {
-
-            /// Step 1a: Create 2 tag for a text Article and two tags for a video article
-            reuseRepo.Tag tagTire = new reuseRepo.Tag("tire");
-            reuseRepo.Tag tagChain = new reuseRepo.Tag("Bike Chain");
-            reuseRepo.Tag tagCD = new reuseRepo.Tag("CD");
-            reuseRepo.Tag tagCoaster = new reuseRepo.Tag("Coaster");
-
-            /// Step 1b: Printing the tags
-            TestAndPrintTags(tagTire);
-            TestAndPrintTags(tagChain);
-            TestAndPrintTags(tagCD);
-            TestAndPrintTags(tagCoaster);
-
-
-            /// Step 2a: Create an array of text article tags
-            reuseRepo.Tag[] textTags = new reuseRepo.Tag[] { tagTire, tagChain };
-            reuseRepo.Tag[] videoTags = new reuseRepo.Tag[] { tagCD, tagCoaster };
-
-
-            reuseRepo.TextArticle textArticle = new TextArticle("Text Article", "Arsal Khan", 4.9, textTags, "memo");
-            reuseRepo.VideoArticle videoArticle = new VideoArticle("Video Article", "Arsal Khan", 21, textTags, "youtube link");
-
-            /// Step 3: Print and Play text and video Articles
-            textArticle.print();
-            videoArticle.play();
-
-        }
-
-        static void TestAndPrintTags(reuseRepo.Tag tag)
-        {
-            /// Step 1b: Printing the tags
-            Console.WriteLine(tag.getTag());
-            Console.WriteLine(tag.isPhrase());
         }
 
     }
