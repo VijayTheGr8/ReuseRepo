@@ -17,6 +17,9 @@ namespace reuseRepo
         /// 3. Prints and Plays text and video articles respectively.
         /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
         /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
         static void Main()
         {
             string fileContent;
@@ -32,7 +35,7 @@ namespace reuseRepo
 
 
             // 2. Increases the price for Articles by 10%
-            double textPrice= textArticle.getPrice();
+            double textPrice = textArticle.getPrice();
             Console.WriteLine("The price for text article, " + textArticle.getTitle() + ", is $" + textPrice.ToString("00.00"));
             textArticle.setPrice(textArticle.getPrice() * 1.1);
             double videoPrice = videoArticle.getPrice();
