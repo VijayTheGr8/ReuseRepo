@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-12-12T22:28:31.345Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15" etag="GmqGoS0LI9eE7b2I2UuW" version="14.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-13T18:02:28.416Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="psDdbyTAM57ty2RMmP_s" version="13.11.0" type="github">
   <diagram id="Vd4rNCXtSsH7h7m5AwRn" name="Article">
-    <mxGraphModel dx="786" dy="486" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="782" dy="437" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="5uMioibvbi96hbgjhdTk-0" />
         <mxCell id="5uMioibvbi96hbgjhdTk-1" parent="5uMioibvbi96hbgjhdTk-0" />
@@ -74,13 +74,11 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="o-HS0HUyBrbIT2XWCSfl-1" value="0..*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="5uMioibvbi96hbgjhdTk-1" vertex="1">
-          <mxGeometry x="540" y="160" width="30" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="53UcHR5WeEn8w3ysAne4-1" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="5uMioibvbi96hbgjhdTk-1" source="5uMioibvbi96hbgjhdTk-3" target="5uMioibvbi96hbgjhdTk-7" edge="1">
-          <mxGeometry x="-1" y="3" relative="1" as="geometry">
+        <mxCell id="53UcHR5WeEn8w3ysAne4-1" value="1...*" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="5uMioibvbi96hbgjhdTk-1" source="5uMioibvbi96hbgjhdTk-3" target="5uMioibvbi96hbgjhdTk-7">
+          <mxGeometry x="-1" y="8" relative="1" as="geometry">
             <mxPoint x="320" y="320" as="sourcePoint" />
             <mxPoint x="480" y="320" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
