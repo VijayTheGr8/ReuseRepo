@@ -18,6 +18,7 @@ namespace reuseRepo
         /// 4. (over)Writes Text articles into textArticle.json and Video articals into VideoArticles.json
         /// </summary>
         /// <remarks>
+        /// Citation: Levereged the following for research and to solve specific problems during this assignment.
         /// De George, Andy, et al. “Tutorial: Create a Project Template.” Create a Project Template for Dotnet New - .NET | Microsoft Docs, Microsoft 2020, 12 Nov. 2020, 
         /// http://docs.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-project-template
         /// 
