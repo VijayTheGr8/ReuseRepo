@@ -1,3 +1,6 @@
+/// <summary>
+/// The namespace for Tag class
+/// </summary>
 namespace reuseRepo
 {
     /// <summary>
@@ -6,9 +9,8 @@ namespace reuseRepo
     /// <remarks>
     /// Part of /Diagram/Article.drawio
     /// </remarks>
-    public class Tag
+    public class Tag        
     {
-
         /// <summary>
         /// Stores Tag or Tag Phrase
         /// </summary>
@@ -24,7 +26,7 @@ namespace reuseRepo
         }
 
         /// <summary>
-        /// Returns the Tag
+        /// Returns the Tag object
         /// </summary>
         /// <returns> The tag is a string </returns>
         public string getTag()
@@ -44,6 +46,7 @@ namespace reuseRepo
         /// <summary>
         /// Creates JSON formatted text for this object
         /// </summary>
+        /// <returns> Returns the VideoArticle object in a string format</returns>
         public string getJSONString()
         {
             //used approach from the link below

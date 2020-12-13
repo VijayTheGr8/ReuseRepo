@@ -1,5 +1,8 @@
 using System;
 
+/// <summary>
+/// The namespace for VideoArticle class
+/// </summary>
 namespace reuseRepo
 {
     /// <summary>
@@ -40,6 +43,7 @@ namespace reuseRepo
         /// <summary>
         /// Creates JSON formatted text for this object
         /// </summary>
+        /// <returns> Returns the VideoArticle object in a string format</returns>
         public string getJSONString()
         {
             //used approach from the link below
