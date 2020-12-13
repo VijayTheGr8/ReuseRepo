@@ -18,17 +18,17 @@
         "memo": "this is a multie line memo."
     },
     {
-        "title": "pick an album",
-        "author": "Drake",
-        "price": 649,
+        "title": "How To Open a Can Without a Can Opener",
+        "author": "Taras Kul",
+        "price": 5.5,
         "tags": [
             {
-                "tag": "drake"
+                "tag": "Can Opener"
             },
             {
-                "tag": "Dance"
+                "tag": "Kitchen Hacks"
             }
         ],
-        "videolink": "http://test.com/vidoefilelink"
+        "videolink": "https://www.youtube.com/watch?v=UK9Y27NHnxE\u0026ab_channel=TarasKul"
     }
 ]
