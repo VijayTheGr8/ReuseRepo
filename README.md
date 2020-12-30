@@ -11,11 +11,10 @@
 For now I am just putting some logs here with links that I used. will fix them later
 
 ## 1. Design 
-    [AK] TBD  
+    [AK] TBD
 
 ## 2. Project Setup
    [AK] 1. Started using data stucture project and cleaned it up for reuserepo  
-
    
 ## 3. UI Setup
    [AK] Created angular baseline project 
@@ -27,7 +26,10 @@ For now I am just putting some logs here with links that I used. will fix them l
         ![](images/3-localhost-4200.png)
       
 ## 4. API Setup
-    [AK] TBD - Still figuring out how to build APIs.
+
+    [AK] Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
+    Next step is to setup MongoDB  
+
    
 ## 5. Hosting Setup
    [AK] Signed up for azure free hosting acount with $100 credit.  
