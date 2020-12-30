@@ -1,7 +1,7 @@
 # ReuseRepo - To be Edited
 
  Title: [ReuseRepo](https://reuserepo.azurewebsites.net/)  
- Team: Arsal, Reehan, Vijay  
+ Team: Arsal, Rayhaan, Vijay  
  Repo: [https://github.com/ArsalKhan1/ReuseRepo](https://github.com/ArsalKhan1/ReuseRepo)  
   
  A blurb about the project, team, technology and aspiration  
