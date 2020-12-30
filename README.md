@@ -1,6 +1,6 @@
 # ReuseRepo - To be Edited
 
- Title: [ReuseRepo](http://ReuseRepo.AzureWebsite.net)  
+ Title: [ReuseRepo](https://reuserepo.azurewebsites.net/)  
  Team: Arsal, Reehan, Vijay  
  Repo: [https://github.com/ArsalKhan1/ReuseRepo](https://github.com/ArsalKhan1/ReuseRepo)  
   
@@ -30,11 +30,11 @@ For now I am just putting some logs here with links that I used. will fix them l
     [AK] TBD - Still figuring out how to build APIs.
    
 ## 5. Hosting Setup
-   [AK] signed up for azure free hosting acount with $100 credit.  
-   [AK] built angular for deployment  
+   [AK] Signed up for azure free hosting acount with $100 credit.  
+   [AK] Built angular for deployment  
         ng build --prod  
-        this created a biuld under [UI-Angular](UI-Angular/dist/reuserepo)  
-        hosted the site following this [post](https://www.c-sharpcorner.com/article/easily-deploy-angular-app-to-azure-from-visual-studio-code/)  
+        This created a build under [UI-Angular](UI-Angular/dist/reuserepo)  
+        Hosted the site following this [post](https://www.c-sharpcorner.com/article/easily-deploy-angular-app-to-azure-from-visual-studio-code/)  
         ![](images/5-reuserepo-azurewebsite.png)        
 
    
