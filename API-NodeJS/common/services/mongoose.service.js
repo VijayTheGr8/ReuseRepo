@@ -9,13 +9,13 @@ const options = {
     // all other approaches are now deprecated by MongoDB:
     useNewUrlParser: true,
     useUnifiedTopology: true
-    
+
 };
 const connectWithRetry = () => {
     console.log('MongoDB connection with retry')
-    mongoose.connect("mongodb://localhost:27017/rest-tutorial", options).then(()=>{
+    mongoose.connect("mongodb://reuseideas:bE3w9RvZAP40YQHU396BmGC0M4A1iIheiNfh0Gizfp0zcTegLsANsZPpXOc3z1AEDRSq11EIq5mox4SkEsHiCQ==@reuseideas.mongo.cosmos.azure.com:10255/?ssl=true&appName=@reuseideas@", options).then(() => {
         console.log('MongoDB is connected')
-    }).catch(err=>{
+    }).catch(err => {
         console.log('MongoDB connection unsuccessful, retry after 5 seconds. ', ++count);
         setTimeout(connectWithRetry, 5000)
     })

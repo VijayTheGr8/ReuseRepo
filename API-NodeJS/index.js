@@ -3,9 +3,12 @@ const config = require('./common/config/env.config.js');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
 
 const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
+const ImageRouter = require('./image-tags/routes.config');
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -21,8 +24,11 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json());
+app.use(multipartMiddleware);
+
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
+ImageRouter.routesConfig(app);
 
 
 app.listen(config.port, function () {
