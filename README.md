@@ -28,6 +28,10 @@ For now I am just putting some logs here with links that I used. will fix them l
       
 ## 4. API Setup
    [AK] Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
+   
+        - npm install  
+        - npm start  
+    This will start API server on port 3600. This before running the front-end.
  
 
 ## 5. Hosting Setup
