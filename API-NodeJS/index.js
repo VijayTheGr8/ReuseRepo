@@ -9,6 +9,7 @@ const multipartMiddleware = multipart();
 const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
 const ImageRouter = require('./image-tags/routes.config');
+const ArticleRouter = require('./article/routes.config');
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -29,6 +30,7 @@ app.use(multipartMiddleware);
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
 ImageRouter.routesConfig(app);
+ArticleRouter.routesConfig(app);
 
 
 app.listen(config.port, function () {
