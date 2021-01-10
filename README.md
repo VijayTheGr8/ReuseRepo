@@ -1,20 +1,20 @@
-# ReuseRepo - To be Edited
+# ReuseRepo
 
- Title: [ReuseRepo](https://reuserepo.azurewebsites.net/#/article/search)  
+ Website: [ReuseRepo](https://reuserepo.azurewebsites.net/#/article/search)  
  Team: Arsal, Rayhaan, Vijay  
  Repo: [https://github.com/ArsalKhan1/ReuseRepo](https://github.com/ArsalKhan1/ReuseRepo)  
   
- A blurb about the project, team, technology and aspiration  
-
+ We created a community website that helps people find ideas to reuse items that otherwise would go in the garbage or recycling.
+   ![demo](images/demo.gif) 
 
 # Design
 The application uses 3 tiers.
-    Angular based Front End
-    Node and Express based APIs 
-    Cosmos DB with Mongo APIs
+    Angular based Front End,
+    Node and Express based APIs, and 
+    MongoDB
    
 ## 1. UI (Angular + Material Design Skin)
-   The application uses out of the box Angular and Material Design skin. Used angular cli ng commands to spawn the project. See details in [/UI-Angular/README.md](UI-Angular/README.md)
+   The application uses an out of the box Angular and Material Design skin. We used angular cli ng commands to spawn the project. See details in [/UI-Angular/README.md](UI-Angular/README.md)
 
 ## 2. API (NodeJS and ExpressJS)
    Created a shell API using NodeJS by following this [example](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)  
@@ -22,20 +22,18 @@ The application uses 3 tiers.
     Use following commands to run it  
         - npm install  
         - npm start  
-    This will start API server on port 3600. 
+    This will start the API server on port 3600. 
  
 ## 3. Datastore (Cosmos DB with Mongos API)
-   Created an out of the box cosmos db on azure using portal.azure.com
+   Created an out of the box MongoDB on azure using portal.azure.com
 
 # Hosting
    [AK] Signed up for azure free hosting acount with $200 credit.  
    [AK] Built angular for deployment  
         ng build --prod  
-        Deployed to [https://reuserepo.azurewebsites.net/#/article/search](https://reuserepo.azurewebsites.net/#/article/search)
-        This created a build under [UI-Angular/dist/reuserepo](UI-Angular/dist/reuserepo)  
-        Hosted the site following this [post](https://www.c-sharpcorner.com/article/easily-deploy-angular-app-to-azure-from-visual-studio-code/)  
-        ![](images/5-reuserepo-azurewebsite.png)        
+        Deployed to [https://reuserepo.azurewebsites.net/#/article/search](https://reuserepo.azurewebsites.net/#/article/search)  
+        Hosted the site following this [post](https://www.c-sharpcorner.com/article/easily-deploy-angular-app-to-azure-from-visual-studio-code/)         
 
-        Hosted newer version with search and list functionality 
-        ![](images/6-reuserepo-azurewebsite.png) 
+        Hosted latest version with search and list functionality 
+   ![](images/6-reuserepo-azurewebsite.png) 
    
