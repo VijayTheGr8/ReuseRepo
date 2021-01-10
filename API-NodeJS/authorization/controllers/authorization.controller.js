@@ -3,6 +3,12 @@ const jwtSecret = require('../../common/config/env.config.js').jwt_secret,
 const crypto = require('crypto');
 const uuid = require('uuid');
 
+/**
+ * Process a user login request
+ * 
+ * @param {Object} req - the http request
+ * @param {Object} res - the http response 
+ */
 exports.login = (req, res) => {
     try {
         let refreshId = req.body.userId + jwtSecret;
@@ -18,6 +24,12 @@ exports.login = (req, res) => {
     }
 };
 
+/**
+ * Refresh the JWT token that authorizes a logged-in user
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
 exports.refresh_token = (req, res) => {
     try {
         req.body = req.jwt;

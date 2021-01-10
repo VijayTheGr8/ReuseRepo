@@ -15,3 +15,11 @@ exports.getArticleById = (req, res) => {
             res.status(200).send(result);
         });
 };
+
+exports.insert = (req, res) => {
+    console.log(req);
+    ArticleModel.createArticle(req.body)
+        .then((result) => {
+            res.status(201).send({id: result._id});
+        });
+};

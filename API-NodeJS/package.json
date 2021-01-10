@@ -25,5 +25,8 @@
     "connect-multiparty": "2.2.0",
     "@google-cloud/vision": "2.1.2",
     "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

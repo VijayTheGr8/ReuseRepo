@@ -37,6 +37,7 @@ exports.findById = (id) => {
 };
 
 exports.createArticle = (articleData) => {
+    console.log(articleData);
     const article = new Article(articleData);
     return article.save();
 };
