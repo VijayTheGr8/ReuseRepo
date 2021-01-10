@@ -14,7 +14,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { AntdModule } from 'src/app/antd.module';
 import { SearchComponent } from './search/search.component';
-import { ArticleListComponent } from './article/article-list/article-list.component';
+import { ArticleDetailsComponent } from './article/article-details/article-details.component';
 
 registerLocaleData(en);
 
@@ -22,7 +22,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     SearchComponent,
-    ArticleListComponent,
+    ArticleDetailsComponent,
   ],
   imports: [
     BrowserModule,

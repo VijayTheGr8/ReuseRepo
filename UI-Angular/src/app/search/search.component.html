@@ -39,7 +39,7 @@
             <div nz-col nzSpan="12" [nzOffset]="6">
                 <ng-container *ngFor="let tag of tags">
                     <nz-tag [nzColor]="'blue'">
-                        {{tag?.value}}
+                        {{tag?.name}}
                     </nz-tag>
                 </ng-container>
             </div>
@@ -48,8 +48,11 @@
         <div *ngFor="let article of articles" nz-row [nzJustify]="'center'" [nzGutter]="8">
             <div nz-col nzSpan="12">
                 <nz-card style="margin-top: 16px" [nzLoading]="false">
-                    <nz-card-meta nzTitle="Card title" nzDescription="This is the description">
+                    <nz-card-meta [nzTitle]="title" [nzDescription]="article.description">
                     </nz-card-meta>
+                    <ng-template #title>
+                        <a [routerLink]="['../', article._id]">{{article.title}}</a>
+                    </ng-template>
                 </nz-card>
             </div>
         </div>

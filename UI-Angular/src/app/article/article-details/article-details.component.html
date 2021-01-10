@@ -1,0 +1,32 @@
+<div style="height: 100%;" nz-row [nzJustify]="'center'" [nzGutter]="8">
+    <div nz-col nzSpan="8">
+        <nz-card style="margin-top: 16px; margin-bottom: 16px; height: '96%'"
+            [nzCover]="article?.image ? avatarTemplate : null" [nzLoading]="false">
+            <nz-card-meta [nzTitle]="title" [nzDescription]="description">
+            </nz-card-meta>
+            <ng-template #title>
+                <span>{{article?.title}}</span>
+            </ng-template>
+
+            <ng-template #description>
+                <div nz-row [nzJustify]="'start'" [nzGutter]="12">
+                    <div nz-col nzSpan="12">
+                        <ng-container *ngFor="let tag of article?.tags">
+                            <nz-tag [nzColor]="'blue'">
+                                {{tag?.name}}
+                            </nz-tag>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <span>{{article?.description}}</span>
+                </div>
+            </ng-template>
+        </nz-card>
+
+        <ng-template #avatarTemplate>
+            <img class="img-fluid" alt="example" [src]="article?.image" />
+        </ng-template>
+    </div>
+</div>

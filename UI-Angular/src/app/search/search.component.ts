@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class SearchComponent {
 
+  apiURL = environment.apiURL;
   selectedSearch = [];
   tagExtractURL = environment.apiURL + 'image-extract';
 
@@ -19,7 +21,7 @@ export class SearchComponent {
 
   constructor(
     public sanitizer: DomSanitizer,
-    private router: Router
+    private http: HttpClient
   ) { }
 
   handleChange(data: NzUploadChangeParam) {
@@ -48,11 +50,16 @@ export class SearchComponent {
 
   search() {
     this.tags = this.selectedSearch.map((t) => {
-      if (typeof (t) === 'string') {
-        return { value: t }
-      }
-      return t;
+      return { name: t.value || t };
     });
+
+    if (this.tags.length) {
+      this.http.post(`${this.apiURL}article/search`, { query: { limit: 15, tags: this.tags } }).subscribe((articles: any) => {
+        this.articles = articles;
+      });
+    } else {
+      this.articles = [];
+    }
   }
 
   sanitizeImageURL(url) {
