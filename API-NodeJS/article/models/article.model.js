@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const articleSchema = new Schema({
     title: String,
     description: String,
+    userId: String,
     tags: [{
         name: String,
         category: {
@@ -12,7 +13,9 @@ const articleSchema = new Schema({
             default: 'unknown'
         }
     }],
-    image: String
+    image: String,
+    updatedAt: String,
+    createdAt: String,
 });
 
 articleSchema.virtual('id').get(function () {
@@ -30,7 +33,6 @@ exports.findById = (id) => {
     return Article.findById(id)
         .then((result) => {
             result = result.toJSON();
-            delete result._id;
             delete result.__v;
             return result;
         });
@@ -56,11 +58,20 @@ exports.list = (perPage, page) => {
     });
 };
 
-exports.filterByTags = (tags) => {
-    console.log(tags);
+exports.filter = (query) => {
     return new Promise((resolve, reject) => {
+        const filterQuery = [];
+        const sort = { [query.sort ? query.sort.field : 'updatedAt']: query.sort ? query.sort.order : -1 };
+        if (query && query.tags) {
+            filterQuery.push({ 'tags.name': { $in: query.tags.map((tag) => new RegExp(tag.name, "i")) } });
+        }
+        if (query && query.userId) {
+            filterQuery.push({ userId: query.userId })
+        }
         Article
-            .find({ 'tags.name': { $in: tags.map((tag) => new RegExp(tag.name, "i")) } })
+            .find(
+                filterQuery.length ? { $or: filterQuery } : {}
+            ).sort(sort)
             .exec(function (err, articles) {
                 if (err) {
                     reject(err);
@@ -74,12 +85,14 @@ exports.filterByTags = (tags) => {
 exports.patchArticle = (id, articleData) => {
     return Article.findOneAndUpdate({
         _id: id
-    }, articleData);
+    }, articleData, { new: true, useFindAndModify: false });
 };
 
 exports.removeById = (articleId) => {
+    console.log(articleId);
     return new Promise((resolve, reject) => {
-        Article.deleteMany({ _id: articleId }, (err) => {
+        Article.deleteOne({ _id: articleId }, (err) => {
+            console.log(err)
             if (err) {
                 reject(err);
             } else {
