@@ -1,6 +1,12 @@
 const UserModel = require('../models/users.model');
 const crypto = require('crypto');
 
+/**
+ * Insert a new user into the database
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
 exports.insert = (req, res) => {
     let salt = crypto.randomBytes(16).toString('base64');
     req.body.salt = salt;
@@ -15,12 +21,25 @@ exports.insert = (req, res) => {
         });
 };
 
+/**
+ * Search for a user based on ID
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
 exports.getById = (req, res) => {
     UserModel.findById(req.params.userId)
         .then((result) => {
             res.status(200).send(result);
         });
 };
+
+/**
+ * Update user data based on ID
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
 exports.patchById = (req, res) => {
     if (req.body.password) {
         let salt = crypto.randomBytes(16).toString('base64');
@@ -35,6 +54,12 @@ exports.patchById = (req, res) => {
 
 };
 
+/**
+ * Delete a user from the database based on ID
+ * 
+ * @param {Object} req the http request
+ * @param {Object} res the http response
+ */
 exports.removeById = (req, res) => {
     UserModel.removeById(req.params.userId)
         .then((result)=>{

@@ -7,8 +7,7 @@ module.exports = {
     "environment": "dev",
     "permissionLevels": {
         "NORMAL_USER": 1,
-        "PAID_USER": 4,
-        "ADMIN": 2048
+        "ADMIN": 2
     },
     "dbConn": "mongodb+srv://rayhaan:Gorilla8252@cluster0.aeflv.mongodb.net/ReuseRepo?retryWrites=true&w=majority"
 };

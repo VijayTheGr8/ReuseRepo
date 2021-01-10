@@ -38,7 +38,7 @@ const User = mongoose.model('Users', userSchema);
  * Finds a user based on email address
  * 
  * @param {string} - the email address to search for
- * @return {User} - the user with a matching email address
+ * @returns {Promise} - a promise that executes the search
  */
 exports.findByEmail = (email) => {
     return User.find({email: email});
@@ -48,7 +48,7 @@ exports.findByEmail = (email) => {
  * Finds a user based on ID
  * 
  * @param {string} id - the ID to search for
- * @return {User} - the user with a matching ID
+ * @returns {User} - the user with a matching ID
  */
 exports.findById = (id) => {
     return User.findById(id)
@@ -66,7 +66,7 @@ exports.findById = (id) => {
  * Add a new user to the database
  * 
  * @param {Object} userData - the data for a new user
- * @return {Promise} - a promise for the completion of the database insertion
+ * @returns {Promise} - a promise for the completion of the database insertion
  */
 exports.createUser = (userData) => {
     const user = new User(userData);
@@ -78,6 +78,7 @@ exports.createUser = (userData) => {
  * 
  * @param {String} id - the idea of the user to update
  * @param {Object} userData - the updated user data
+ * @returns {Promise} a promise that performs the update
  */
 exports.patchUser = (id, userData) => {
     return User.findOneAndUpdate({
@@ -89,7 +90,7 @@ exports.patchUser = (id, userData) => {
  * Get a promise to remove the a user from the database with a given ID 
  * 
  * @param {String} userId - the ID to search for
- * @return {Promise} - a promise that performs the deletion
+ * @returns {Promise} - a promise that performs the deletion
  */
 exports.removeById = (userId) => {
     return new Promise((resolve, reject) => {
