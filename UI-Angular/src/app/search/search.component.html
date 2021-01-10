@@ -2,7 +2,11 @@
     <div class="search-engine">
 
         <div nz-row [nzJustify]="'center'" [nzGutter]="8">
-            <div nz-col nzSpan="9">
+            <div nz-col nzSpan="1">
+                <button nz-button [nzSize]="'large'" [routerLink]="['../', 'create']"><i nz-icon
+                        nzType="file-add"></i></button>
+            </div>
+            <div nz-col nzSpan="8">
                 <nz-select class="select" nzDropdownClassName="hide-dropdown" [nzSize]="'large'" [nzOpen]="false"
                     nzMode="tags" nzPlaceHolder="Search" [nzAllowClear]="true" [(ngModel)]="selectedSearch"
                     [nzCustomTemplate]="multipleTemplate" [nzFilterOption]="defaultFilterOption">

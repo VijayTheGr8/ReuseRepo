@@ -1,32 +1,57 @@
 <div style="height: 100%;" nz-row [nzJustify]="'center'" [nzGutter]="8">
     <div nz-col nzSpan="8">
-        <nz-card style="margin-top: 16px; margin-bottom: 16px; height: '96%'"
-            [nzCover]="article?.image ? avatarTemplate : null" [nzLoading]="false">
+        <nz-card style="margin-top: 16px; margin-bottom: 16px; height: '96%'" [nzLoading]="!article"
+            [nzExtra]="allowEdit ? actionEdit : null" [nzCover]="article?.image ? avatarTemplate : null"
+            [nzLoading]="false">
             <nz-card-meta [nzTitle]="title" [nzDescription]="description">
             </nz-card-meta>
             <ng-template #title>
-                <span>{{article?.title}}</span>
+                <p nz-typography [nzEditable]="allowEdit" [(nzContent)]="article.title"></p>
             </ng-template>
 
             <ng-template #description>
                 <div nz-row [nzJustify]="'start'" [nzGutter]="12">
-                    <div nz-col nzSpan="12">
-                        <ng-container *ngFor="let tag of article?.tags">
-                            <nz-tag [nzColor]="'blue'">
+                    <div nz-col style="width: 100%;">
+                        <ng-container *ngIf="!editMode && allowEdit">
+                            <nz-tag [nzColor]="'blue'" *ngFor="let tag of article?.tags">
                                 {{tag?.name}}
                             </nz-tag>
+                            <button *ngIf="allowEdit" class="ant-typography-edit"
+                                style="background: transparent; border: none;" (click)="editMode = true"><i nz-icon
+                                    nzType="edit"></i></button>
+                        </ng-container>
+
+                        <ng-container *ngIf="editMode">
+                            <nz-select [(ngModel)]="article.tags" class="select" nzEditable
+                                nzDropdownClassName="hide-dropdown" [nzOpen]="false"
+                                [nzCustomTemplate]="multipleTemplate" nzMode="tags" nzPlaceHolder="Tags"
+                                [nzAllowClear]="true" [nzFilterOption]="defaultFilterOption">
+                            </nz-select>
+
+                            <ng-template #multipleTemplate let-selected>
+                                <div class="ant-select-selection-item-content">
+                                    {{ selected.nzLabel?.name || selected.nzLabel }}
+                                </div>
+                            </ng-template>
                         </ng-container>
                     </div>
                 </div>
 
                 <div style="margin-top: 30px;">
-                    <span>{{article?.description}}</span>
+                    <p nz-typography [nzEditable]="allowEdit" [(nzContent)]="article.description"></p>
                 </div>
             </ng-template>
         </nz-card>
 
         <ng-template #avatarTemplate>
             <img class="img-fluid" alt="example" [src]="article?.image" />
+        </ng-template>
+
+        <ng-template #actionEdit>
+            <button *ngIf="article?._id" nz-button nzType="primary" (click)="save()"><i nz-icon
+                    nzType="edit"></i>Update</button>
+            <button *ngIf="!article?._id" nz-button nzType="primary" (click)="save()"><i nz-icon
+                    nzType="save"></i>Create</button>
         </ng-template>
     </div>
 </div>

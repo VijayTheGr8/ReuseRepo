@@ -1,5 +1,16 @@
 .img-fluid {
-    margin-top: 30px;
+    margin-top: 20px;
     height: 300px;
     object-fit: contain;
+}
+
+.select {
+    width: 100% !important;
+}
+
+
+:host::ng-deep {
+    .ant-card-head {
+        border: none !important;
+    }
 }
