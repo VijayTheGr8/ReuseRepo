@@ -46,6 +46,7 @@ exports.findById = (id) => {
 
 /** save article in database */
 exports.createArticle = (articleData) => {
+    console.log(articleData);
     const article = new Article(articleData);
     return article.save();
 };

@@ -22,7 +22,14 @@ exports.validRefreshNeeded = (req, res, next) => {
     }
 };
 
-
+/**
+ * Check if the request came with a valid auth token
+ *
+ * @param {Object} req - the http request
+ * @param {Object} res - the http response
+ * @param {Function} next - a callback to the next function to be run
+ * @returns {Object} an http response if theres an error, the return value of the next callback otherwise
+ */
 exports.validJWTNeeded = (req, res, next) => {
     if (req.headers['authorization']) {
         try {
