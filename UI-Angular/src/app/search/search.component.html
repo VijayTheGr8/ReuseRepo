@@ -2,10 +2,14 @@
     <div class="search-engine">
 
         <div nz-row [nzJustify]="'center'" [nzGutter]="8">
+
+            <!-- Add article button -->
             <div nz-col nzSpan="1">
                 <button nz-button [nzSize]="'large'" [routerLink]="['../', 'create']"><i nz-icon
                         nzType="file-add"></i></button>
             </div>
+
+            <!-- Search Box to add tags -->
             <div nz-col nzSpan="8">
                 <nz-select class="select" nzDropdownClassName="hide-dropdown" [nzSize]="'large'" [nzOpen]="false"
                     nzMode="tags" nzPlaceHolder="Search" [nzAllowClear]="true" [(ngModel)]="selectedSearch"
@@ -29,16 +33,20 @@
                 </ng-template>
             </div>
 
+            <!-- Upload button to upload & extract objects from the image and add them as tags in search box -->
             <div nz-col nzSpan="1">
                 <nz-upload [nzAction]="tagExtractURL" (nzChange)="handleChange($event)" [nzShowUploadList]="false">
                     <button nz-button [nzSize]="'large'"><i nz-icon nzType="picture"></i></button>
                 </nz-upload>
             </div>
+
+            <!-- Search button, by clicking it user can fetch the articles based on tags added in search box -->
             <div nz-col nzSpan="2"><button [nzSize]="'large'" nz-button nzType="primary" (click)="search()"><i nz-icon
                         nzType="search"></i>Search</button>
             </div>
         </div>
 
+        <!-- Search Tags added by user -->
         <div style="margin-top: 2%;" nz-row [nzJustify]="'start'" [nzGutter]="8">
             <div nz-col nzSpan="12" [nzOffset]="6">
                 <ng-container *ngFor="let tag of tags">
@@ -49,12 +57,16 @@
             </div>
         </div>
 
+        <!-- List of Articles -->
         <div *ngFor="let article of articles" nz-row [nzJustify]="'center'" [nzGutter]="8">
             <div nz-col nzSpan="12">
                 <nz-card style="margin-top: 16px" [nzLoading]="false">
                     <nz-card-meta [nzTitle]="title" [nzDescription]="article.description">
                     </nz-card-meta>
+
+                    <!-- Article Title -->
                     <ng-template #title>
+                        <!-- Clicking on Article title will take to article details page -->
                         <a [routerLink]="['../', article._id]">{{article.title}}</a>
                     </ng-template>
                 </nz-card>

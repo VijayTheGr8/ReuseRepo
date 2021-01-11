@@ -1,5 +1,5 @@
 {
-  "name": "reuse-ideas-api",
+  "name": "ReuseRepo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/makinhs/rest-api-tutorial.git"
+    "url": "git+https://github.com/ArsalKhan1/ReuseRepo.git"
   },
-  "author": "",
+  "author": "Arsal Khan, Rayhaan Tanweer, Vijay Patnaik",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/makinhs/rest-api-tutorial/issues"
+    "url": "https://github.com/ArsalKhan1/ReuseRepo"
   },
-  "homepage": "https://github.com/makinhs/rest-api-tutorial#readme",
+  "homepage": "https://github.com/ArsalKhan1/ReuseRepo",
   "dependencies": {
     "body-parser": "1.19.0",
     "express": "^4.17.1",

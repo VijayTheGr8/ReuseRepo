@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'http://localhost:3600/'
+  apiURL: 'https://api-reuserepo.azurewebsites.net/'
 };

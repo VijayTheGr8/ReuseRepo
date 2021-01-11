@@ -1,26 +1,33 @@
 <div style="height: 100%;" nz-row [nzJustify]="'center'" [nzGutter]="8">
     <div nz-col nzSpan="8">
         <nz-card style="margin-top: 16px; margin-bottom: 16px; height: '96%'" [nzLoading]="!article"
-            [nzExtra]="allowEdit ? actionEdit : null" [nzCover]="article?.image ? avatarTemplate : null"
-            [nzLoading]="false">
+            [nzExtra]="allowEdit ? actionEdit : null" [nzCover]="articleCoverTemplate" [nzLoading]="!article">
             <nz-card-meta [nzTitle]="title" [nzDescription]="description">
             </nz-card-meta>
+
+            <!-- Article Title -->
             <ng-template #title>
                 <p nz-typography [nzEditable]="allowEdit" [(nzContent)]="article.title"></p>
             </ng-template>
 
+            <!-- Article Description -->
             <ng-template #description>
                 <div nz-row [nzJustify]="'start'" [nzGutter]="12">
                     <div nz-col style="width: 100%;">
+
+                        <!-- list of tags -->
                         <ng-container *ngIf="!editMode && allowEdit">
                             <nz-tag [nzColor]="'blue'" *ngFor="let tag of article?.tags">
                                 {{tag?.name}}
                             </nz-tag>
+
+                            <!-- user can click on edit to add / remove tags if user im / herself has created the article -->
                             <button *ngIf="allowEdit" class="ant-typography-edit"
                                 style="background: transparent; border: none;" (click)="editMode = true"><i nz-icon
                                     nzType="edit"></i></button>
                         </ng-container>
 
+                        <!-- selection box to add / remove tags -->
                         <ng-container *ngIf="editMode">
                             <nz-select [(ngModel)]="article.tags" class="select" nzEditable
                                 nzDropdownClassName="hide-dropdown" [nzOpen]="false"
@@ -37,17 +44,31 @@
                     </div>
                 </div>
 
+                <!-- article description -->
                 <div style="margin-top: 30px;">
                     <p nz-typography [nzEditable]="allowEdit" [(nzContent)]="article.description"></p>
                 </div>
             </ng-template>
         </nz-card>
 
-        <ng-template #avatarTemplate>
-            <img class="img-fluid" alt="example" [src]="article?.image" />
+        <!-- article cover -->
+        <ng-template #articleCoverTemplate>
+            <img class="img-fluid" alt="example"
+                [src]="article?.image || 'https://www.acommerce.asia/wp-content/uploads/2016/03/1200x600-light-gray-solid-color-background.jpg'" />
         </ng-template>
 
+        <!-- User can create / update article -->
         <ng-template #actionEdit>
+            <button style="margin-right: 6px;" nz-button nz-button nz-popover nzPopoverTitle="Title"
+                nzPopoverTrigger="click" [(nzPopoverVisible)]="showEditImageUrlPopOver"
+                [nzPopoverContent]="contentTemplate"><i nz-icon nzType="picture"></i></button>
+            <ng-template #contentTemplate>
+                <nz-input-group nzAddOnAfterIcon="link">
+                    <input type="text" nz-input [(ngModel)]="article.image" />
+                </nz-input-group>
+
+                <button style="margin-top: 6px;" (click)="showEditImageUrlPopOver = false" nz-button>Save URL</button>
+            </ng-template>
             <button *ngIf="article?._id" nz-button nzType="primary" (click)="save()"><i nz-icon
                     nzType="edit"></i>Update</button>
             <button *ngIf="!article?._id" nz-button nzType="primary" (click)="save()"><i nz-icon
