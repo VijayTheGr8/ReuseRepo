@@ -7,8 +7,8 @@ const ADMIN = config.permissionLevels.ADMIN;
 const NORMAL = config.permissionLevels.NORMAL_USER;
 
 exports.routesConfig = function (app) {
-    app.post('/users/insert', [
-        UsersController.insert
+    app.post('/users/register', [
+        UsersController.register
     ]);
     app.get('/users/:userId', [
         ValidationMiddleware.validJWTNeeded,

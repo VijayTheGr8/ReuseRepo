@@ -15,7 +15,9 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { AntdModule } from 'src/app/antd.module';
 import { SearchComponent } from './search/search.component';
 import { ArticleListComponent } from './article/article-list/article-list.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { RegisterComponent } from './account/register/register.component';
+import { LoginComponent } from './account/login/login.component';
+import { ProfileComponent } from './account/profile/profile.component';
 
 registerLocaleData(en);
 
@@ -24,7 +26,9 @@ registerLocaleData(en);
     AppComponent,
     SearchComponent,
     ArticleListComponent,
-    LoginRegisterComponent,
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

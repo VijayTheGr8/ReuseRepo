@@ -2,12 +2,12 @@ const UserModel = require('../models/users.model');
 const crypto = require('crypto');
 
 /**
- * Insert a new user into the database
+ * Insert a new user into the database (register them)
  * 
  * @param {Object} req the http request
  * @param {Object} res the http response
  */
-exports.insert = (req, res) => {
+exports.register = (req, res) => {
     let salt = crypto.randomBytes(16).toString('base64');
     req.body.salt = salt;
     let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
