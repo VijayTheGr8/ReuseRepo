@@ -9,5 +9,5 @@ module.exports = {
         "NORMAL_USER": 1,
         "ADMIN": 2
     },
-    "dbConn": "mongodb+srv://rayhaan:Gorilla8252@cluster0.aeflv.mongodb.net/ReuseRepo?retryWrites=true&w=majority"
+    "dbConn": "mongodb+srv://rayhaan:passw0rd@cluster0.aeflv.mongodb.net/ReuseRepo?retryWrites=true&w=majority"
 };

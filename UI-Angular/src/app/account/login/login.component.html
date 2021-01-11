@@ -1,12 +1,15 @@
-<form (submit)="login()">
-  <div class="form-group">
-    <label for="email">Username or Email</label>
-    <input type="email" class="form-control" name="email" placeholder="" [(ngModel)]="credentials.email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password"
+<div class="centered">
+  <form (submit)="login()">
+    <h1>ReuseRepo</h1>
+    <div class="form-group">
+      <input type="text" class="form-control field" name="email" placeholder="Email or Username"
+      [(ngModel)]="credentials.email">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control field" name="password" placeholder="Password"
       [(ngModel)]="credentials.password">
-  </div>
-  <button type="submit" class="btn btn-default">Sign in!</button>
-</form>
+    </div>
+    <button type="submit" class="main-btn btn-default">Sign in</button>
+    <button (click)="toRegister()" class="second-btn btn-default">Register</button>
+  </form>
+</div>

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../account.component.scss']
 })
 export class LoginComponent implements OnInit {
   credentials: TokenPayload = {
@@ -28,5 +28,9 @@ export class LoginComponent implements OnInit {
     }, (err) => {
       console.error(err);
     });
+  }
+
+  toRegister() {
+    this.router.navigateByUrl('/register');
   }
 }
