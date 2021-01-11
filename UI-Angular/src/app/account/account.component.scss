@@ -1,23 +1,31 @@
 .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.button-container {
+    width: 260px;
+}
+
+form {
+    text-align: center;
+}
+
+.box{
+    margin-top: 100px !important;
+    background:white;
+    width:300px;
+    border-radius:6px;
+    margin: 0 auto 0 auto;
+    border: #535353 3px solid;
+    padding-bottom: 75px;
+    padding-top: 10px;
 }
 
 h1{
     font-size:1.5em;
     color:#525252;
     text-align: center;
-}
-
-.box{
-    background:white;
-    width:300px;
-    border-radius:6px;
-    margin: 0 auto 0 auto;
-    padding:0px 0px 70px 0px;
-    border: #2980b9 4px solid; 
 }
 
 .field{
@@ -55,7 +63,8 @@ h1{
 .second-btn{
     float:left;
     background:#535353;
-    width:125px;  padding-top:5px;
+    width:125px;
+    padding-top:5px;
     padding-bottom:5px;
     color:white;
     border-radius:4px;

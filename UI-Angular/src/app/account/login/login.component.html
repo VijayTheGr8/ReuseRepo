@@ -1,5 +1,5 @@
-<div class="centered">
-  <form (submit)="login()">
+<div class="box centered">
+  <form (submit)="login()" class="account-form">
     <h1>ReuseRepo</h1>
     <div class="form-group">
       <input type="text" class="form-control field" name="email" placeholder="Email or Username"
@@ -9,7 +9,9 @@
       <input type="password" class="form-control field" name="password" placeholder="Password"
       [(ngModel)]="credentials.password">
     </div>
-    <button type="submit" class="main-btn btn-default">Sign in</button>
-    <button (click)="toRegister()" class="second-btn btn-default">Register</button>
+    <div class="centered button-container">
+      <button type="submit" class="main-btn btn-default">Sign in</button>
+      <button (click)="toRegister()" class="second-btn btn-default">Register</button>
+    </div>
   </form>
 </div>

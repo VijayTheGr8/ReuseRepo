@@ -1,5 +1,5 @@
-<div class="centered">
-  <form (submit)="register()">
+<div class="box centered">
+  <form (submit)="register()" class="account-form">
     <h1>Register at Reuse Repo</h1>
     <div class="form-group">
       <input type="text" class="form-control field" name="firstName" placeholder="First Name" [(ngModel)]="credentials.firstName">
@@ -16,7 +16,9 @@
     <div class="form-group">
       <input type="password" class="form-control field" name="password" placeholder="Password" [(ngModel)]="credentials.password">
     </div>
-    <button type="submit" class="main-btn btn-default">Register</button>
-    <button (click)="toLogin()" class="second-btn btn-default">Sign in</button>
+    <div class="centered button-container">
+      <button type="submit" class="main-btn btn-default">Register</button>
+      <button (click)="toLogin()" class="second-btn btn-default">Sign in</button>
+    </div>
   </form>
 </div>
