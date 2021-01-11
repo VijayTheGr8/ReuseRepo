@@ -1,3 +1,5 @@
+/** This is mainly used for creating connection with Azure Cosmos DB */
+
 const mongoose = require('mongoose');
 const config = require('../config/env.config');
 let count = 0;
@@ -10,19 +12,21 @@ const options = {
     bufferMaxEntries: 0,
     // all other approaches are now deprecated by MongoDB:
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    retryWrites: false
 
 };
+
+//AK - the retry is built into the lib, we just need to use it right so that even when it disconnect, it connect back automatically. 
+// we should not be retrying it behing timeout.
 const connectWithRetry = () => {
-    console.log('MongoDB connection with retry')
-    mongoose.connect(config.dbConn, options).then(() => {
+    mongoose.connect(config.dbConn, options)
+    .then(() => {
         console.log('MongoDB is connected')
-    }).catch(err => {
-        console.log('MongoDB connection unsuccessful, retry after 5 seconds. ', ++count);
-        setTimeout(connectWithRetry, 5000)
-    })
+    });
 };
 
 connectWithRetry();
 
 exports.mongoose = mongoose;
+

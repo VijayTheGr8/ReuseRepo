@@ -64,6 +64,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin'
 import { NzAnchorModule } from 'ng-zorro-antd/anchor'
 import { NzBackTopModule } from 'ng-zorro-antd/back-top'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 /**
  * AntDesign Components
@@ -130,6 +131,7 @@ const MODULES = [
   NzAnchorModule,
   NzBackTopModule,
   NzDividerModule,
+  NzTypographyModule
 ]
 
 /**
