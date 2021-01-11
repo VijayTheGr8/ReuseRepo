@@ -7,7 +7,7 @@ module.exports = {
     "environment": "dev",
     "permissionLevels": {
         "NORMAL_USER": 1,
-        "PAID_USER": 4,
-        "ADMIN": 2048
-    }
+        "ADMIN": 2
+    },
+    "dbConn":"mongodb://reuseideas:bE3w9RvZAP40YQHU396BmGC0M4A1iIheiNfh0Gizfp0zcTegLsANsZPpXOc3z1AEDRSq11EIq5mox4SkEsHiCQ==@reuseideas.mongo.cosmos.azure.com:10255/?ssl=true&appName=@reuseideas@"
 };

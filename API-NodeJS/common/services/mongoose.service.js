@@ -1,6 +1,8 @@
 /** This is mainly used for creating connection with Azure Cosmos DB */
 
 const mongoose = require('mongoose');
+const config = require('../config/env.config');
+let count = 0;
 
 const options = {
     dbName: 'reuseideas',
@@ -14,8 +16,12 @@ const options = {
     retryWrites: false
 
 };
+
+//AK - the retry is built into the lib, we just need to use it right so that even when it disconnect, it connect back automatically. 
+// we should not be retrying it behing timeout.
 const connectWithRetry = () => {
-    mongoose.connect("mongodb://reuseideas:bE3w9RvZAP40YQHU396BmGC0M4A1iIheiNfh0Gizfp0zcTegLsANsZPpXOc3z1AEDRSq11EIq5mox4SkEsHiCQ==@reuseideas.mongo.cosmos.azure.com:10255/?ssl=true&appName=@reuseideas@", options).then(() => {
+    mongoose.connect(config.dbConn, options)
+    .then(() => {
         console.log('MongoDB is connected')
     });
 };
@@ -23,3 +29,4 @@ const connectWithRetry = () => {
 connectWithRetry();
 
 exports.mongoose = mongoose;
+
