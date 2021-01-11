@@ -15,6 +15,22 @@ const routes: Routes = [
     pathMatch: "full"
   },
   {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
+  },
+  {
     path: 'article',
     children: [
       {

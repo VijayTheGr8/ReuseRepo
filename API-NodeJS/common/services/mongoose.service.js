@@ -5,7 +5,7 @@ const config = require('../config/env.config');
 let count = 0;
 
 const options = {
-    dbName: 'reuseideas',
+    dbName: 'ReuseRepo',
     autoIndex: false, // Don't build indexes
     poolSize: 10, // Maintain up to 10 socket connections
     // If not connected, return errors immediately rather than waiting for reconnect

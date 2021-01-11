@@ -28,4 +28,7 @@ exports.routesConfig = function (app) {
     app.get('/article/:id', [
         ArticleController.getArticleById
     ]);
+    app.post('/article/insert', [
+        ArticleController.insert
+    ]);
 };
