@@ -11,7 +11,7 @@ let testUser = utilities.testUser;
 describe('User', function () {
 
     // Test adding a user
-    describe('POST /user/register', function () {
+    describe('Register new user', function () {
         it('it should fail', done => {
             chai.request(server)
                 .get('/users/a')
@@ -43,6 +43,4 @@ describe('User', function () {
                 });
         });
     });
-
-
 });
