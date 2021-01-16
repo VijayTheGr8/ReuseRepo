@@ -5,8 +5,9 @@ const server = require('../../index');
 const utilities = require('../utilities');
 let should = chai.should();
 
-// Ensure the user unit test runs first to create the user
+// Ensure the unit tests run first to create the user
 require('../unit/user');
+require('../unit/auth');
 
 chai.use(chaiHttp);
 

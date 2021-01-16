@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const config = require('../config/env.config');
 let count = 0;
 
+mongoose.set('useFindAndModify', false);
+
 const options = {
     dbName: 'ReuseRepo',
     autoIndex: false, // Don't build indexes

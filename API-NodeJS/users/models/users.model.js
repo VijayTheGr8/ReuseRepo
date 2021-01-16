@@ -45,6 +45,16 @@ exports.findByEmail = (email) => {
 };
 
 /**
+ * Finds a user based on username
+ * 
+ * @param {string} - the username to search for
+ * @returns {Promise} - a promise that executes the search
+ */
+exports.findByUsername = (username) => {
+    return User.find({username: username});
+};
+
+/**
  * Finds a user based on ID
  * 
  * @param {string} id - the ID to search for
