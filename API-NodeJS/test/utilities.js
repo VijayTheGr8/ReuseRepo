@@ -21,5 +21,5 @@ exports.testUser = {
     username: randomString(10),
     email: randomEmail(10),
     password: randomString(10),
-    permission: 1
+    permission: 2 // This user is an admin so they can delete themselves
 }

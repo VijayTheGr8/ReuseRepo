@@ -49,6 +49,9 @@ exports.register = (req, res) => {
 exports.getById = (req, res) => {
     UserModel.findById(req.params.userId)
         .then((result) => {
+            if(result == null) {
+                res.status(404).send({ error: "User not found" });
+            }
             res.status(200).send(result);
         });
 };

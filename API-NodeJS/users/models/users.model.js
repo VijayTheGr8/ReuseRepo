@@ -53,6 +53,9 @@ exports.findByEmail = (email) => {
 exports.findById = (id) => {
     return User.findById(id)
         .then((result) => {
+            if(result == null) {
+                return null;
+            }
             result = result.toJSON();
             delete result._id;
             delete result.__v;
