@@ -22,9 +22,10 @@ const options = {
 //AK - the retry is built into the lib, we just need to use it right so that even when it disconnect, it connect back automatically. 
 // we should not be retrying it behind timeout.
 const connectWithRetry = () => {
+    var isInTest = typeof global.it === 'function';
     mongoose.connect(config.dbConn, options)
     .then(() => {
-        console.log('MongoDB is connected')
+        if(!isInTest) { console.log('MongoDB is connected'); }
     });
 };
 
