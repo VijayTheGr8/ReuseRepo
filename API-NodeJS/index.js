@@ -55,6 +55,8 @@ ArticleRouter.routesConfig(app);
 
 console.log(config.port);
 
-app.listen(config.port, function () {
+var server = app.listen(config.port, function () {
     console.log('app listening at port %s', config.port);
 });
+
+module.exports = server;

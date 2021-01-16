@@ -18,7 +18,7 @@ const options = {
 };
 
 //AK - the retry is built into the lib, we just need to use it right so that even when it disconnect, it connect back automatically. 
-// we should not be retrying it behing timeout.
+// we should not be retrying it behind timeout.
 const connectWithRetry = () => {
     mongoose.connect(config.dbConn, options)
     .then(() => {
@@ -29,4 +29,4 @@ const connectWithRetry = () => {
 connectWithRetry();
 
 exports.mongoose = mongoose;
-
+exports.options = options;
