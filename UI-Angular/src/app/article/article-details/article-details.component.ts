@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-article-details',
@@ -26,7 +27,8 @@ export class ArticleDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -107,4 +109,8 @@ export class ArticleDetailsComponent implements OnInit {
     console.log(file);
   }
 
+  goBack() {
+    this.location.back();
+    console.log("back");
+  }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -16,7 +17,8 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -53,4 +55,16 @@ export class ArticleListComponent implements OnInit {
     })
   }
 
+
+  toSearch() {
+    this.router.navigateByUrl('/article/search');
+  }
+
+  toCreate() {
+    this.router.navigateByUrl('/article/create');
+  }
+
+  toLogout() {
+    this.router.navigateByUrl('/logout');
+  }
 }

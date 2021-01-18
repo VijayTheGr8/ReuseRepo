@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { environment } from '../../environments/environment';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-search',
@@ -26,13 +27,23 @@ export class SearchComponent {
   /** List of articles */
   articles = [];
 
+  // If user is logged in
+  loggedIn = false;
+
   constructor(
     /** injected sanitizer to use it later to sanitize content to avoid xss attacks */
     public sanitizer: DomSanitizer,
 
     /** In built http client provided by Angular to communicate with backend through REST APIs */
-    private http: HttpClient
+    private http: HttpClient,
+
+    // Custom authentication service to communicate with API
+    private auth: AuthenticationService
   ) { }
+
+  ngOnInit() {
+    this.loggedIn = this.auth.isLoggedIn();
+  }
 
   /** It gets called when user uploads an image to extract the objects out of it */
   handleChange(data: NzUploadChangeParam) {

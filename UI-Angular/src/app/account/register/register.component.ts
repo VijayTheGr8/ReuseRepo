@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.auth.profile().subscribe(() => {
-      this.router.navigateByUrl('/profile');
+      this.router.navigateByUrl('/article/list');
     }, (err) => {
     });
   }
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.auth.register(this.credentials).subscribe(() => {
       this.auth.login(this.credentials).subscribe(() => {
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/article/list');
       });
     }, (err) => {
       console.error(err);

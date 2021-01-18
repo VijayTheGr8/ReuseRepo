@@ -17,14 +17,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.auth.profile().subscribe(() => {
-      this.router.navigateByUrl('/profile');
+      this.router.navigateByUrl('/article/list');
     }, (err) => {
     });
   }
 
   login() {
     this.auth.login(this.credentials).subscribe((data) => {
-      this.router.navigateByUrl('/profile');
+      this.router.navigateByUrl('/article/list');
     }, (err) => {
       console.error(err);
     });

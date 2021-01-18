@@ -1,7 +1,7 @@
 <div style="height: 100%;" nz-row [nzJustify]="'center'" [nzGutter]="8">
     <div nz-col nzSpan="8">
         <nz-card style="margin-top: 16px; margin-bottom: 16px; height: '96%'" [nzLoading]="!article"
-            [nzExtra]="allowEdit ? actionEdit : null" [nzCover]="articleCoverTemplate" [nzLoading]="!article">
+            [nzExtra]="allowEdit ? actionEdit : backButton" [nzCover]="articleCoverTemplate" [nzLoading]="!article">
             <nz-card-meta [nzTitle]="title" [nzDescription]="description">
             </nz-card-meta>
 
@@ -59,6 +59,7 @@
 
         <!-- User can create / update article -->
         <ng-template #actionEdit>
+            <button nz-button nzType="primary" class="backButton" (click)="goBack()"><i nz-icon nzType="left"></i>Back</button>
             <button style="margin-right: 6px;" nz-button nz-button nz-popover nzPopoverTitle="Title"
                 nzPopoverTrigger="click" [(nzPopoverVisible)]="showEditImageUrlPopOver"
                 [nzPopoverContent]="contentTemplate"><i nz-icon nzType="picture"></i></button>
@@ -73,6 +74,10 @@
                     nzType="edit"></i>Update</button>
             <button *ngIf="!article?._id" nz-button nzType="primary" (click)="save()"><i nz-icon
                     nzType="save"></i>Create</button>
+        </ng-template>
+
+        <ng-template #backButton>
+            <button nz-button class="backButton" nzType="primary" (click)="goBack()"><i nz-icon nzType="left"></i>Back</button>
         </ng-template>
     </div>
 </div>

@@ -3,8 +3,17 @@
 
         <div nz-row [nzJustify]="'center'" [nzGutter]="8">
 
+            <div *ngIf="!loggedIn" nz-col nzSpan="2">
+                <button [nzSize]="'large'" nz-button nzType="primary" [routerLink]="'/login'"><i nz-icon
+                    nzType="key"></i>Log In</button>
+            </div>
+            <div *ngIf="loggedIn" nz-col nzSpan="2.5">
+                <button [nzSize]="'large'" nz-button nzType="primary" [routerLink]="'/article/list'"><i nz-icon
+                        nzType="profile"></i>Account</button>
+            </div>
+
             <!-- Add article button -->
-            <div nz-col nzSpan="1">
+            <div *ngIf="loggedIn" nz-col nzSpan="1">
                 <button nz-button [nzSize]="'large'" [routerLink]="['../', 'create']"><i nz-icon
                         nzType="file-add"></i></button>
             </div>
