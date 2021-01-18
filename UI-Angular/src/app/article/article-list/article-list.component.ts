@@ -22,6 +22,9 @@ export class ArticleListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(!this.auth.isLoggedIn()) {
+      this.router.navigateByUrl('/article/search');
+    }
     this.fetchArticles();
     this.username = this.auth.getUsername();
   }
@@ -53,18 +56,5 @@ export class ArticleListComponent implements OnInit {
       /** Upon successful delete operation from the backend remove aarticle from the list */
       this.articles.splice(index, 1);
     })
-  }
-
-
-  toSearch() {
-    this.router.navigateByUrl('/article/search');
-  }
-
-  toCreate() {
-    this.router.navigateByUrl('/article/create');
-  }
-
-  toLogout() {
-    this.router.navigateByUrl('/logout');
   }
 }
