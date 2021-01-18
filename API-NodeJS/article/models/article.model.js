@@ -16,11 +16,10 @@ const articleSchema = new Schema({
             default: 'unknown'
         }
     }],
-    image: String
+    image: String,
+    createdAt: String,
+    updatedAt: String
 });
-
-articleSchema.index({ "createdAt": 1 });
-articleSchema.index({ "updatedAt": 1 });
 
 /** articles schema ends here */
 
@@ -33,9 +32,6 @@ articleSchema.virtual('id').get(function () {
 articleSchema.findById = function (cb) {
     return this.model('Articles').find({ id: this.id }, cb);
 };
-
-// Store created and updated at times in article documents
-articleSchema.set('timestamps', true);
 
 const Article = mongoose.model('Articles', articleSchema);
 
