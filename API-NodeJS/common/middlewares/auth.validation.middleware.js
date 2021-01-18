@@ -30,7 +30,7 @@ exports.validRefreshNeeded = (req, res, next) => {
  * @param {Function} next - a callback to the next function to be run
  * @returns {Object} an http response if theres an error, the return value of the next callback otherwise
  */
-exports.validJWTNeeded = (req, res, next) => {
+exports.requireValidJWT = (req, res, next) => {
     if (req.headers['authorization']) {
         try {
             let authorization = req.headers['authorization'].split(' ');
@@ -42,9 +42,9 @@ exports.validJWTNeeded = (req, res, next) => {
             }
 
         } catch (err) {
-            return res.status(403).send();
+            return res.status(403).send({errors: "Invalid JWT token"});
         }
     } else {
-        return res.status(401).send();
+        return res.status(401).send({errors: "Missing JWT token"});
     }
 };

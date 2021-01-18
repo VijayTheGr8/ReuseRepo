@@ -12,7 +12,7 @@ describe('User', function () {
 
     // Test adding a user
     describe('Register new user', function () {
-        it('it should fail', done => {
+        it('it should fail to access an invalid id', done => {
             chai.request(server)
                 .get('/users/a')
                 .end((err, res) => {

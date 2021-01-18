@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken'),
     secret = require('../config/env.config')['jwt_secret'];
 
 const ADMIN_PERMISSION = require('../config/env.config').permissionLevels.ADMIN;
+const ArticleModel = require('../../article/models/article.model');
 
 /**
  * Check that the user has a certain level of permission before continuing the request
@@ -43,3 +44,33 @@ exports.requireSameUser = (req, res, next) => {
     }
 
 };
+
+/**
+ * Check that the request on the article is coming from the author
+ * or an admin
+ * 
+ * @param {Object} req - the http request
+ * @param {Object} res - the http response
+ * @param {Function} next - a callback to the next function to be run
+ * @returns {Object} an http response if error, the return value of the callback otherwise
+ */
+exports.requireSameAuthor = async (req, res, next) => {
+    // Let admins bypass
+    let userPermission = parseInt(req.jwt.permission);
+    if(userPermission >= ADMIN_PERMISSION) {
+        return next();
+    }
+
+    // Check if the user logged in is the author of the article requested
+    let username = req.jwt.username;
+    let article = await ArticleModel.findById(req.params.articleId)
+            .then((article) => {
+                return article;
+            });
+    if(article.authorUsername === username) {
+        return next();
+    }
+    else {
+        return res.status(403).send({ errors: "Not same user and not admin" });
+    }
+}

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { environment } from '../../../environments/environment';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-article-details',
@@ -20,20 +21,24 @@ export class ArticleDetailsComponent implements OnInit {
   allowEdit = false;
 
   showEditImageUrlPopOver = false;
+  username: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
-  ) {
+    private http: HttpClient,
+    private auth: AuthenticationService
+  ) { }
 
+  ngOnInit(): void {
+    this.username = this.auth.getUsername();
     /** Fetch articleId from the route in browser search bar */
     const articleId = this.activatedRoute.snapshot.params?.articleId;
 
-    /** I articleId is there fetch the article from db */
+    /** articleId is there fetch the article from db */
     if (articleId) {
       this.http.get(`${environment.apiURL}article/${articleId}`).subscribe((article) => {
         this.article = article;
-        this.allowEdit = this.article?.userId === '1' || false;
+        this.allowEdit = this.article?.authorUsername === this.username || false;
       });
     } else {
       this.article = {
@@ -45,9 +50,6 @@ export class ArticleDetailsComponent implements OnInit {
       this.editMode = true;
       this.allowEdit = true;
     }
-  }
-
-  ngOnInit(): void {
   }
 
   /** To not allow user to add duplicate tags */
@@ -77,16 +79,22 @@ export class ArticleDetailsComponent implements OnInit {
     /** If article has an Id it means it is and update operation, otherwise create a new article */
     if (this.article?._id) {
       /** Article Update Request */
-      this.http.put(`${environment.apiURL}article/update/${this.article._id}`, this.article).subscribe((savedArticle) => {
-        this.article = savedArticle;
-        this.editMode = false;
-      });
+      this.http.put(`${environment.apiURL}article/update/${this.article._id}`,
+                    this.article,
+                    {headers:{Authorization: `Bearer ${this.auth.getToken()}`}})
+                    .subscribe((savedArticle) => {
+                      this.article = savedArticle;
+                      this.editMode = false;
+                    });
     } else {
       /** Article Create Request */
-      this.http.post(`${environment.apiURL}article/create`, this.article).subscribe((savedArticle) => {
-        this.article = savedArticle;
-        this.editMode = false;
-      });
+      this.http.post(`${environment.apiURL}article/create`,
+                      this.article,
+                      {headers:{Authorization: `Bearer ${this.auth.getToken()}`}})
+                      .subscribe((savedArticle) => {
+                        this.article = savedArticle;
+                        this.editMode = false;
+                      });
     }
   }
 

@@ -15,6 +15,7 @@ export interface UserData {
 
 export interface AuthToken {
   accessToken: string;
+  username: string;
 }
 
 export interface TokenPayload {
@@ -33,6 +34,7 @@ export class AuthenticationService {
 
   // Properties
   private authToken: string;
+  private username: string;
 
   // Constructor
   constructor(private http: HttpClient) { }
@@ -46,6 +48,7 @@ export class AuthenticationService {
       map((data: AuthToken) => {
         if(data.accessToken) {
           this.storeToken(data.accessToken);
+          this.storeUsername(data.username);
         }
         return data;
       })
@@ -61,6 +64,7 @@ export class AuthenticationService {
       map((data: AuthToken) => {
         if (data.accessToken) {
           this.storeToken(data.accessToken);
+          this.storeUsername(data.username);
         }
         return data;
       })
@@ -80,6 +84,7 @@ export class AuthenticationService {
   public logout(): void {
     this.authToken = '';
     window.localStorage.removeItem('reuserepo-token');
+    window.localStorage.removeItem('reuserepo-username');
   }
 
   public getData(): UserData {
@@ -101,13 +106,25 @@ export class AuthenticationService {
     return user ? true : false;
   }
 
+  public getUsername(): string {
+    if(!this.username) {
+      this.username = localStorage.getItem('reuserepo-username');
+    }
+    return this.username;
+  }
+
   // Private methods
   private storeToken(token: string): void {
     localStorage.setItem('reuserepo-token', token);
     this.authToken = token;
   }
 
-  private getToken(): string {
+  private storeUsername(username: string): void {
+    localStorage.setItem('reuserepo-username', username);
+    this.username = username;
+  }
+
+  public getToken(): string {
     if (!this.authToken) {
       this.authToken = localStorage.getItem('reuserepo-token');
     }

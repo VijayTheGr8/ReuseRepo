@@ -1,6 +1,6 @@
 const ArticleModel = require('../models/article.model');
 
-/** list articles filtered by  tags and / or userId */
+/** list articles filtered by tags and / or author */
 // req=request coming from the browser
 // res=the data going back to browser
 exports.search = (req, res) => {
@@ -8,10 +8,12 @@ exports.search = (req, res) => {
     // req.body.query=lists filter criteria coming from browser
     ArticleModel.filter(req.body.query)
         .then((articles) => {
-            //now that we have list of articles lets write it to console log and then send it to browser.
-            console.log(articles);
-            // send 200 to indicate to browser that call was successful and send the result which is ilst of articles
+            // send 200 to indicate to browser that call was successful and send the result which is list of articles
             res.status(200).send(articles);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.satutus(400).send(err);
         });
 };
 
@@ -20,7 +22,8 @@ exports.search = (req, res) => {
 // req=request coming from the browser
 // res=the data going back to browser
 exports.createArticle = (req, res) => {
-    // req.body contains the article data thatw e need to save in the datastore
+    req.body.authorUsername = req.jwt.username;
+    // req.body contains the article data that we need to save in the datastore
     ArticleModel.createArticle(req.body)
         .then((article) => {
             console.log(article);
@@ -48,11 +51,9 @@ exports.updateArticle = (req, res) => {
 // req=request coming from the browser
 // res=the data going back to browser
 exports.removeById = (req, res) => {
-    console.log(req.params);
     ArticleModel.removeById(req.params.articleId)
         .then((article) => {
             //if deleted, article object will be null here
-            console.log(article);
             res.status(200).send(article);
         });
 };
@@ -64,13 +65,5 @@ exports.getArticleById = (req, res) => {
         .then((article) => {
             console.log(article);
             res.status(200).send(article);
-        });
-};
-
-exports.insert = (req, res) => {
-    console.log(req);
-    ArticleModel.createArticle(req.body)
-        .then((result) => {
-            res.status(201).send({id: result._id});
         });
 };

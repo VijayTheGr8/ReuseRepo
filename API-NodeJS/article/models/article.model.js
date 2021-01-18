@@ -6,8 +6,8 @@ const Schema = mongoose.Schema;
 /** articles schema starts here */
 const articleSchema = new Schema({
     title: String,
+    authorUsername: String,
     description: String,
-    userId: String,
     tags: [{
         name: String,
         category: {
@@ -16,10 +16,11 @@ const articleSchema = new Schema({
             default: 'unknown'
         }
     }],
-    image: String,
-    updatedAt: String,
-    createdAt: String,
+    image: String
 });
+
+articleSchema.index({ "createdAt": 1 });
+articleSchema.index({ "updatedAt": 1 });
 
 /** articles schema ends here */
 
@@ -32,6 +33,9 @@ articleSchema.virtual('id').get(function () {
 articleSchema.findById = function (cb) {
     return this.model('Articles').find({ id: this.id }, cb);
 };
+
+// Store created and updated at times in article documents
+articleSchema.set('timestamps', true);
 
 const Article = mongoose.model('Articles', articleSchema);
 
@@ -46,12 +50,11 @@ exports.findById = (id) => {
 
 /** save article in database */
 exports.createArticle = (articleData) => {
-    console.log(articleData);
     const article = new Article(articleData);
     return article.save();
 };
 
-/** Filter and or order articles by tags and / or userId */
+/** Filter and or order articles by tags and / or author */
 exports.filter = (query) => {
     return new Promise((resolve, reject) => {
         const filterQuery = [];
@@ -64,14 +67,15 @@ exports.filter = (query) => {
             //loops through the array of tags and add them to filter
             filterQuery.push({ 'tags.name': { $in: query.tags.map((tag) => new RegExp(tag.name, "i")) } });
         }
-        // if there is a query object and query has user id then we add the userid criteria to limit articles to that user
-        if (query && query.userId) {
-            filterQuery.push({ userId: query.userId })
+        // if there is a query object and query has user id then we add the author criteria to limit articles to that user
+        if (query && query.authorUsername) {
+            filterQuery.push({ authorUsername: query.authorUsername });
         }
         Article
             .find(
                 filterQuery.length ? { $or: filterQuery } : {}
-            ).sort(sort)
+            )
+            // .sort(sort)
             .exec(function (err, articles) {
                 if (err) {
                     //if there is any error exeucing query then return error
@@ -93,10 +97,8 @@ exports.patchArticle = (id, articleData) => {
 
 /** remove article by Id */
 exports.removeById = (articleId) => {
-    console.log(articleId);
     return new Promise((resolve, reject) => {
         Article.deleteOne({ _id: articleId }, (err) => {
-            console.log(err)
             //if err object is null then mongoose was successful in deleting the article
             if (err) {
                 reject(err);

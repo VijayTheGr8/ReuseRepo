@@ -12,7 +12,7 @@ exports.register = (req, res) => {
     UserModel.findByEmail(req.body.email)
         .then((user) => {
             if (user[0]) {
-                res.status(406).send({error: "An account with this email already exists"});
+                return res.status(406).send({error: "An account with this email already exists"});
             }
             checkUsernameThenRegister(req, res);
         });
@@ -29,7 +29,7 @@ function checkUsernameThenRegister(req, res) {
     UserModel.findByUsername(req.body.username)
         .then((user) => {
             if (user[0]) {
-                res.status(406).send({ error: "An account with this username already exists" });
+                return res.status(406).send({ error: "An account with this username already exists" });
             }
             registerRequest(req, res);
         });
@@ -83,6 +83,10 @@ exports.patchById = (req, res) => {
         let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
         req.body.password = salt + "$" + hash;
     }
+
+    // Disallow updating email and username to prevent duplicate conflicts
+    delete req.body.email;
+    delete req.body.username;
 
     UserModel.patchUser(req.params.userId, req.body)
         .then((result) => {

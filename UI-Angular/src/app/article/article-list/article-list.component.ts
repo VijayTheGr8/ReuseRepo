@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -11,14 +12,16 @@ export class ArticleListComponent implements OnInit {
 
   tabPosition = 'all';
   articles = [];
+  username: string;
 
   constructor(
-    private http: HttpClient
-  ) {
-    this.fetchArticles();
-  }
+    private http: HttpClient,
+    private auth: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
+    this.fetchArticles();
+    this.username = this.auth.getUsername();
   }
 
   /*
@@ -28,20 +31,22 @@ export class ArticleListComponent implements OnInit {
 
   fetchArticles() {
     const sortObj = { field: 'updatedAt', order: 'desc' };
-    const listArticleQuery = this.tabPosition === 'all' ? { query: { sort: sortObj } } : { query: { userId: '1', sort: sortObj } };
+    const listArticleQuery = this.tabPosition === 'all' ? { query: { sort: sortObj } } : { query: { authorUsername: this.username, sort: sortObj } };
     this.http.post(`${environment.apiURL}article/search`, listArticleQuery).subscribe((articles: any) => {
       this.articles = articles;
     });
   }
 
-
   /**
+   * Delete an article
    * 
-   * @param article - article tobe deleted 
+   * @param article - article to be deleted 
    * @param index - index of the article to be deleted
    */
   delete(article, index: number) {
-    this.http.delete(`${environment.apiURL}article/${article._id}`).subscribe((d) => {
+    this.http.delete(`${environment.apiURL}article/${article._id}`,
+                      {headers:{Authorization: `Bearer ${this.auth.getToken()}`}})
+                      .subscribe((d) => {
       console.log(d);
       /** Upon successful delete operation from the backend remove aarticle from the list */
       this.articles.splice(index, 1);

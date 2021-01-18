@@ -11,19 +11,19 @@ exports.routesConfig = function (app) {
         UsersController.register
     ]);
     app.get('/users/:userId', [
-        ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.requireValidJWT,
         PermissionMiddleware.requirePermissionLevel(NORMAL),
         PermissionMiddleware.requireSameUser,
         UsersController.getById
     ]);
     app.patch('/users/:userId', [
-        ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.requireValidJWT,
         PermissionMiddleware.requirePermissionLevel(NORMAL),
         PermissionMiddleware.requireSameUser,
         UsersController.patchById
     ]);
     app.delete('/users/:userId', [
-        ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.requireValidJWT,
         PermissionMiddleware.requirePermissionLevel(ADMIN),
         UsersController.removeById
     ]);
