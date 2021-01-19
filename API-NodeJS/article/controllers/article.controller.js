@@ -26,7 +26,6 @@ exports.createArticle = (req, res) => {
     // req.body contains the article data that we need to save in the datastore
     ArticleModel.createArticle(req.body)
         .then((article) => {
-            console.log(article);
             // returning a status code 200 which means call was successful
             // also sending results which is the newly created article object returned from mongoose along with the id field which was populated by mongoose
             res.status(200).send(article);
@@ -40,9 +39,8 @@ exports.updateArticle = (req, res) => {
     //pass the updated article info in the body to mogoose' patch function
     ArticleModel.patchArticle(req.params.articleId, req.body)
         .then((article) => {
-                     // returning a status code 200 which means call was successful
+            // returning a status code 200 which means call was successful
             // also sending results which is the updated article object returned from mongoose 
-            console.log(article);
             res.status(200).send(article);
         });
 };
@@ -63,7 +61,9 @@ exports.getArticleById = (req, res) => {
     // req.params.id contains the article id that we need to find the article
     ArticleModel.findById(req.params.id)
         .then((article) => {
-            console.log(article);
             res.status(200).send(article);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
         });
 };
