@@ -1,0 +1,21 @@
+.img-fluid {
+    // margin-top: 20px;
+    height: 300px;
+    object-fit: contain;
+    float: left;
+}
+
+.select {
+    width: 100% !important;
+}
+
+:host::ng-deep {
+    .ant-card-head {
+        border: none !important;
+    }
+}
+
+.backButton {
+    margin-left: 0px;
+    margin-right: 6px;
+}

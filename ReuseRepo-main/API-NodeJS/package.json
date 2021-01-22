@@ -1,0 +1,36 @@
+{
+  "name": "ReuseRepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000 --exit --recursive",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArsalKhan1/ReuseRepo.git"
+  },
+  "author": "Arsal Khan, Rayhaan Tanweer, Vijay Patnaik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArsalKhan1/ReuseRepo"
+  },
+  "homepage": "https://github.com/ArsalKhan1/ReuseRepo",
+  "dependencies": {
+    "@google-cloud/vision": "2.1.2",
+    "body-parser": "1.19.0",
+    "connect-multiparty": "2.2.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.9",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}

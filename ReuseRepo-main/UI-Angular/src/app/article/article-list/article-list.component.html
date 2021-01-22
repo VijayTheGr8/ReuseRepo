@@ -1,0 +1,51 @@
+<div style="margin-top: 2%;" nz-row [nzJustify]="'center'">
+    <button nz-button nzType="primary" class="menu-button" [routerLink]="['../', 'search']"><i nz-icon nzType="search"></i>Search</button>
+    <button nz-button nzType="default" class="menu-button" [routerLink]="['../', 'create']">New Article</button>
+    <button nz-button nzType="dashed" class="menu-button" [routerLink]="'/logout'" nzDanger>Log out</button>
+</div>
+
+<div nz-row [nzJustify]="'center'">
+    <nz-radio-group nz-col nzSpan="12" [(ngModel)]="tabPosition" (ngModelChange)="fetchArticles()"
+        style="margin-bottom: 8px;">
+
+        <!-- User can select "All" to see all the articles -->
+        <label nz-radio-button [nzValue]="'all'">All</label>
+
+        <!-- User can select "My Articles" to see all the articles created by him / her and can delete & edit as well.-->
+        <label nz-radio-button [nzValue]="'my'">My Articles</label>
+    </nz-radio-group>
+</div>
+
+
+<!-- List of articles -->
+<div *ngFor="let article of articles; let i = index;" nz-row [nzJustify]="'center'" [nzGutter]="8">
+    <div nz-col nzSpan="12">
+        <nz-card style="margin-top: 16px" [nzLoading]="false"
+            [nzActions]="tabPosition === 'my' && article?.authorUsername === username ? [editTemplate, deleteTemplate] : []" [nzCover]="articleCoverTemplate">
+            <nz-card-meta [nzTitle]="title" [nzDescription]="article.description">
+            </nz-card-meta>
+
+            <!-- Article Title -->
+            <ng-template #title>
+                <a [routerLink]="['../', article._id]">{{article.title}}</a>
+            </ng-template>
+
+            <!-- Thumbnail -->
+            <ng-template #articleCoverTemplate>
+                <img *ngIf="article?.image" class="myImage" alt="example"
+                    [src]="article?.image"/>
+            </ng-template> 
+
+            <!-- edit action, can be seen only in my artilcles -->
+            <ng-template #editTemplate>
+                <button nz-button nzType="primary" [routerLink]="['../', article._id]"><i nz-icon
+                        nzType="edit"></i>Edit</button>
+            </ng-template>
+
+            <!-- delete action, can be seen only in my artilcles -->
+            <ng-template #deleteTemplate>
+                <button nz-button (click)="delete(article, i)"><i nz-icon nzType="delete"></i> Delete</button>
+            </ng-template>
+        </nz-card>
+    </div>
+</div>
