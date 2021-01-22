@@ -5,6 +5,7 @@
  Repo: [https://github.com/ArsalKhan1/ReuseRepo](https://github.com/ArsalKhan1/ReuseRepo)  
   
  We created a community website that helps people find ideas to reuse items that otherwise would go in the garbage or recycling.
+ 
    ![demo](images/demo.gif) 
 
 # Design
